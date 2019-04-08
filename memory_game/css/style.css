@@ -1,0 +1,130 @@
+body {
+
+	text-align: center;
+	margin: 0;
+	/*setting margin to 0 here means that the
+	header will auto fill across the window*/
+}
+
+h1 {
+	font-family: "Raleway", sans-serif;
+	font-weight: 400;
+	font-size: 45px;
+	letter-spacing: 1px;
+	color: #ffffff;
+	margin: 0;
+	padding: 30px 0;
+	/*this padding was not mentioned in any
+	of the project lessons, but it is the
+	style shown in the images that are shown
+	at the end of each section; go to the 
+	header bracket to read more*/
+}
+
+a {
+	font-family: "Raleway", sans-serif;
+	font-weight: 600;
+	font-size: 18px;
+	letter-spacing: 1px;
+	color: #ffffff;
+	margin: 0 20px;
+	border-bottom: 2px solid transparent;
+}
+
+a:hover {
+	border-color: white;
+}
+
+h2 {
+	font-family: "Raleway", sans-serif;
+	font-weight: 600;
+	font-size: 20px;
+	letter-spacing: 1px;
+	color: #0d2c40;
+
+	text-transform: uppercase;
+}
+
+p {
+	font-family: "Droid Serif", serif;
+	font-size: 18px;
+	line-height: 26px;
+
+}
+
+header {
+	/*this is the orange box*/
+	background-color: #f15b31;
+	color: #FFFFFF;
+	
+	/*
+	padding: 30px 20px;
+
+	this padding style is what was instructed
+	on page 3/6 of Project: Layout Basics;
+	however, it DOES NOT reflect the image
+	shown of the memory game at the end of each 
+	project lesson*/
+
+	/*just noticed this: SINCE, our header wraps
+	both h1 (the big title), and nav (the links
+	to 'instructions' and 'game'), we should
+	probably adjust padding there individually;
+	especially considering that they are both
+	block elements - we can fine tune in their
+	respective style brackets*/
+	
+	text-transform: uppercase;
+	/*again, not included, but we're trying
+	to match the images shown at the end*/
+}
+
+footer{
+	text-transform: uppercase;
+	padding: 0 20px;
+	background-color: #0d2c40;
+	color: white;
+	font-size: 14px;
+	letter-spacing: .08em;
+	font-weight: 500;
+}
+
+.copyright {
+	font-family: 'Raleway', sans-serif;
+	float: left;
+}
+
+.message {
+	font-family: "Raleway", sans-serif;
+	float: right;
+}
+
+.clearfix:after {
+visibility: hidden;
+display: block;
+content: " ";
+clear: both;
+height: 0;
+font-size: 0;
+}
+
+.name {
+	color: #f15b31;
+	font-weight: 700;
+}
+
+nav {
+	background-color: #00A6B3;
+	color: #FFFFFF;
+	padding: 20px 0;
+	margin: 0;
+}
+
+main {
+	width: 850px;
+	margin: 35px auto;
+}
+
+img {
+	margin: 40px 8px 0 8px;
+}
