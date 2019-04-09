@@ -19,6 +19,7 @@ h1 {
 	style shown in the images that are shown
 	at the end of each section; go to the 
 	header bracket to read more*/
+	
 }
 
 a {
@@ -30,6 +31,13 @@ a {
 	margin: 0 20px;
 	border-bottom: 2px solid transparent;
 }
+
+/*hrefs contain a URL or a URL FRAGMENT
+  a url fragment is always preceded by a
+  hashtag (#), which specifies an INTERNAL
+  TARGET LOCATION (an ID of an html element)
+  within the current document. 
+*/
 
 a:hover {
 	border-color: white;
@@ -127,4 +135,38 @@ main {
 
 img {
 	margin: 40px 8px 0 8px;
+}
+
+img:hover{
+	cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+  background-color: #00A6B3;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  padding: 10px 10px;
+  margin: 20px;
+  border-radius: 4px;
+  float:right;
+}
+
+
+#score{
+	height: 50px;
+	width: 200px;
+	line-height: 50px;
+	padding: 0 10px;
+  	margin: 20px;
+  	float: left;
+  	color: #f15b31;
+  	outline: 5px solid #00A6B3;
+  	text-align: center;
+  	font-family: "Raleway", sans-serif;
+  	font-weight: 400;
+  	font-size: 18px;
 }

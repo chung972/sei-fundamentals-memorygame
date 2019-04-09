@@ -49,41 +49,93 @@ var cards = [
 	cardImage: "images/king-of-diamonds.png"
 }
 ];
+
+var createBoard = function(){
+	for(var i=0; i<cards.length; i++){
+		var cardElement = document.createElement('img');
+		cardElement.setAttribute('src', 'images/back.png');
+		/*side note, since the script is executed WITHIN the
+		html file, the path file should be relative to 'index'*/
+		cardElement.setAttribute('data-id', i);
+		cardElement.addEventListener('click', flipCard);
+		document.getElementById('game-board').appendChild(cardElement);
+	}
+}
+
 var cardsInPlay = [];	
 
+var resetBoard = function(){
+	var list = document.querySelectorAll("img");
+	/*we select all img elements in the DOM; 4 img
+	elements should be populated when we invoke the
+	createBoard function*/
+	for(var i=0; i<cards.length; i++){
+		list[i].setAttribute('src', 'images/back.png');
+		/*set all cards with their back facing up*/
+		list[i].addEventListener('click', flipCard);
+		/*in the checkForMatch function, we remove all
+		EventListeners once two cards are flipped; we
+		add the EventListeners back here*/
+	}
+}
+
+
+var wins = 0;
+var losses = 0;
+
 var checkForMatch = function(){
-
-	if(cardsInPlay[0]===cardsInPlay[1]){
-		/*note that the index values for the condition
-		are HARD CODED; cardsInPlay[] shooouuld only 
-		have 2 elements, but i think we may need a way
-		to clear it, would make the game more robust
-		(i guess the user could just refresh the page); 
-		*/
-		alert("You found a match!");
-	} else{
-		alert("Sorry, try again.");
-	}
-	
-};
-
-var flipCard = function(cardId){
-	console.log("User flipped "+cards[cardId].rank+".");
-	cardsInPlay.push(cards[cardId].rank);
-
-	console.log(cards[cardId].suit);
-	console.log(cards[cardId].cardImage);
-	
 	if(cardsInPlay.length===2){
-		/*note that due to the condition in of the if 
-		statement, this code block flat out won't run 
-		if the array length is anything but a 2*/
-		checkForMatch();
+		if(cardsInPlay[0]===cardsInPlay[1]){
+			alert("You found a match! Press the Reset button to play again!");
+			wins++;
+			
+		} else{
+			alert("Sorry, try again.");
+			losses++;
+		}
+
+		var list = document.querySelectorAll("img");
+		for(var i=0; i<cards.length; i++){
+			list[i].removeEventListener('click', flipCard);
+		}
+		/*code block above removes the ability to flip
+		cards once 2 have been selected*/
 	}
+	var scoreDiv = document.getElementById('score');
+	scoreDiv.textContent = "Wins: "+wins+"\n"+"Losses: "+losses;
+}
+
+var flipCard = function(){
+	var cardId = this.getAttribute('data-id');
+	//console.log("User flipped "+cards[cardId].rank+".");
+	cardsInPlay.push(cards[cardId].rank);
+	//console.log("value of cardsinplay"+cardsInPlay);
+	//console.log(cards[cardId].suit);
+	//console.log(cards[cardId].cardImage);
+
+	var newSrc = cards[cardId].cardImage;
+	this.setAttribute('src', newSrc);
+	this.removeEventListener('click', flipCard);
+	/* removed the ability for the user to click on the
+	same flipped card twice in order to get a match	*/
+
+	var delayInMilliseconds = 100;
+	/*added a short delay, so that the user will see 
+	the card flip before being alerted*/
+	setTimeout(checkForMatch, delayInMilliseconds);
+	/*constantly checking to see if the conditions
+	for checkForMatch are met*/
 };
 
-flipCard(1);
-flipCard(2);
+createBoard();
+
+var resetGame = function(){
+	cardsInPlay = [];
+	resetBoard();
+}
+
+var btn = document.getElementsByTagName('button')[0];
+btn.addEventListener('click', resetGame);
 
 
 
