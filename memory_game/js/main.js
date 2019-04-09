@@ -1,6 +1,3 @@
-console.log("Up and running!");
-
-
 /* == LOOSE comparison; only compares values
    === STRICT comparison; compares type AND value
 
@@ -33,18 +30,38 @@ console.log("Up and running!");
 var cards = ["queen", "queen", "king", "king"];
 var cardsInPlay = [];	
 
-var cardOne = cards[2];
-cardsInPlay.push(cardOne);
-console.log("You flipped "+cardOne);
+var checkForMatch = function(){
 
-var cardTwo = cards[3];
-cardsInPlay.push(cardTwo);
-console.log("You flipped "+cardTwo);
-
-if(cardsInPlay.length===2){
 	if(cardsInPlay[0]===cardsInPlay[1]){
-		alert("You found a match!");
+		/*note that the index values for the condition
+		are HARD CODED; cardsInPlay[] shooouuld only 
+		have 2 elements, but i think we may need a way
+		to clear it, would make the game more robust
+		(i guess the user could just refresh the page); 
+		*/
+		console.log("You found a match!");
 	} else{
-		alert("Sorry, try again.");
+		console.log("Sorry, try again.");
 	}
-}
+	
+};
+
+var flipCard = function(cardId){
+	console.log("User flipped "+cards[cardId]+".");
+	cardsInPlay.push(cards[cardId]);
+
+	if(cardsInPlay.length===2){
+		/*note that due to the condition in of the if 
+		statement, this code block flat out won't run 
+		if the array length is anything but a 2*/
+		checkForMatch();
+	}
+};
+
+flipCard(2);
+flipCard(3);
+
+
+
+
+
